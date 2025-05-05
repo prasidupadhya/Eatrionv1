@@ -6,7 +6,7 @@
 
 ---
 
-## 🌟 Features
+## Features
 
 - **Image-based food recognition** (50 food classes)
 - **Daily diary with nutrition breakdown** (calories, protein, carbs, fat)
