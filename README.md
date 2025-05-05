@@ -44,7 +44,9 @@ npm install
 Create a .env file in the root:
 
 VITE_SUPABASE_URL=https://your-supabase-project.supabase.co
+
 VITE_SUPABASE_ANON_KEY=your-anon-key
+
 VITE_USDA_API_KEY=your-usda-api-key
 
 3. Run in development
