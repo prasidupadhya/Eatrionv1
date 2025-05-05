@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EATRION — Profile</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #E8F5E9;
+      color: #1B5E20;
+      line-height: 1.6;
+    }
+
+    .navbar {
+      padding: 1rem 0;
+      background-color: #FFFFFF;
+      border-bottom: 1px solid #C8E6C9;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #388E3C;
+      text-decoration: none;
+    }
+
+    .navbar-menu {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .navbar-menu .nav-link {
+      font-size: 1rem;
+      color: #2E7D32;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .navbar-menu .nav-link:hover,
+    .navbar-menu .nav-link.active {
+      color: #388E3C;
+      font-weight: bold;
+    }
+
+    .btn-outline-logout {
+      border-color: #D32F2F;
+      color: #D32F2F;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      background: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .btn-outline-logout:hover {
+      background-color: #D32F2F;
+      color: #FFFFFF;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    .card {
+      background-color: #FFFFFF;
+      border-radius: 8px;
+      padding: 2rem;
+      border: 1px solid #81C784; 
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h2#greeting {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: #2E7D32;
+      font-weight: bold;
+    }
+
+    #profile-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    label {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1B5E20;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #C8E6C9;
+      border-radius: 8px;
+      font-size: 1rem;
+      background-color: #FFFFFF;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="number"]:focus {
+      outline: none;
+      border-color: #388E3C;
+      box-shadow: 0 0 5px rgba(56, 142, 60, 0.3);
+    }
+
+    p {
+      font-size: 1rem;
+      color: #1B5E20;
+      font-weight: 600;
+    }
+
+    .macro-grams {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background-color: #F1F3F5;
+      border-radius: 8px;
+      border: 1px solid #C8E6C9;
+    }
+
+    .macro-grams h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #2E7D32;
+      font-weight: bold;
+    }
+
+    .macro-grams p {
+      font-size: 1rem;
+      color: #1B5E20;
+      font-weight: normal;
+    }
+
+    button[type="submit"] {
+      background-color: #388E3C;
+      color: #FFFFFF;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #2E7D32; 
+    }
+
+    #profile-msg {
+      margin-top: 1rem;
+      font-size: 1rem;
+      color: #4CAF50; 
+    }
+
+    .text-success {
+      color: #4CAF50;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a class="navbar-brand" href="index.html">Eatrion</a>
+      <div class="navbar-menu">
+        <a class="nav-link" href="diary.html">Diary</a>
+        <a class="nav-link" href="scan.html">Scan</a>
+        <a class="nav-link active" href="profile.html">Profile</a>
+        <button id="logout-btn" class="btn-outline-logout">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="card">
+      <h2 id="greeting">Loading…</h2>
+
+      <form id="profile-form">
+        <!-- 1) Calorie target -->
+        <label for="calorie-target">Daily Calorie Target (kcal)</label>
+        <input id="calorie-target" type="number" min="1" required />
+
+        <!-- 2) Macro % inputs -->
+        <p>Macro Distribution (%)</p>
+        <label for="protein-pct">Protein (%)</label>
+        <input id="protein-pct" type="number" min="0" max="100" required />
+
+        <label for="carbs-pct">Carbs (%)</label>
+        <input id="carbs-pct" type="number" min="0" max="100" required />
+
+        <label for="fat-pct">Fat (%)</label>
+        <input id="fat-pct" type="number" min="0" max="100" required />
+
+        <!-- 3) Computed grams -->
+        <div class="macro-grams">
+          <h3>Grams for your target</h3>
+          <p>Protein: <span id="protein-grams">0</span> g</p>
+          <p>Carbs:   <span id="carbs-grams">0</span> g</p>
+          <p>Fat:     <span id="fat-grams">0</span> g</p>
+        </div>
+
+        <button type="submit">Save Profile</button>
+        <p id="profile-msg" class="text-success"></p>
+      </form>
+    </div>
+  </main>
+
+  <script type="module" src="/src/profile.js"></script>
+</body>
+</html>

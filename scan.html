@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>EATRION - Scan</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #E8F5E9;
+      color: #1B5E20;
+      line-height: 1.6;
+    }
+
+    .navbar {
+      padding: 1rem 0;
+      background-color: #FFFFFF;
+      border-bottom: 1px solid #C8E6C9;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .navbar-brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #388E3C;
+      text-decoration: none;
+    }
+
+    .navbar-menu {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .navbar-menu .nav-link {
+      font-size: 1rem;
+      color: #2E7D32;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .navbar-menu .nav-link:hover,
+    .navbar-menu .nav-link.active {
+      color: #388E3C;
+      font-weight: bold;
+    }
+
+    .btn-outline-logout {
+      border-color: #D32F2F;
+      color: #D32F2F;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      background: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .btn-outline-logout:hover {
+      background-color: #D32F2F;
+      color: #FFFFFF;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    h2.text-center {
+      font-size: 1.8rem;
+      color: #2E7D32;
+      margin-bottom: 2rem;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .form-control[type="file"] {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #C8E6C9;
+      border-radius: 8px;
+      font-size: 1rem;
+      background-color: #FFFFFF;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-control[type="file"]:focus {
+      outline: none;
+      border-color: #388E3C;
+      box-shadow: 0 0 5px rgba(56, 142, 60, 0.3);
+    }
+
+    .preview-wrapper {
+      width: 300px;
+      height: 300px;
+      margin: 0 auto;
+      border: 1px solid #C8E6C9;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #F1F3F5;
+    }
+
+    #preview {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .prediction-text {
+      font-size: 1.5rem;
+      color: #1B5E20;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      display: block;
+      padding: 0.5rem;
+      min-height: 3rem;
+      line-height: 1.5;
+    }
+
+    .suggestion-option {
+      background-color: #C8E6C9;
+      border: 1px solid #388E3C;
+      color: #388E3C;
+      font-size: 1.2rem;
+      font-weight: bold;
+      padding: 0.3rem 0.8rem;
+      margin: 0.2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-block;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .suggestion-option:hover,
+    .suggestion-option:focus {
+      background-color: #388E3C;
+      color: #FFFFFF;
+      outline: none;
+    }
+
+    .form-label {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1B5E20;
+    }
+
+    input[type="number"] {
+      width: 100px;
+      padding: 0.5rem;
+      border: 1px solid #C8E6C9;
+      border-radius: 8px;
+      font-size: 1rem;
+      background-color: #FFFFFF;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="number"]:focus {
+      outline: none;
+      border-color: #388E3C;
+      box-shadow: 0 0 5px rgba(56, 142, 60, 0.3);
+    }
+
+    .serving-value-text {
+      font-size: 1rem;
+      color: #1B5E20;
+    }
+
+    .nutrition-info {
+      background-color: #FFFFFF;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid #81C784;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-top: 1.5rem;
+    }
+
+    .btn-success {
+      background-color: #388E3C;
+      color: #FFFFFF;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-success:hover {
+      background-color: #2E7D32;
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a class="navbar-brand" href="index.html">Eatrion</a>
+      <div class="navbar-menu">
+        <a class="nav-link" href="diary.html">Diary</a>
+        <a class="nav-link active" href="scan.html">Scan</a>
+        <a class="nav-link" href="profile.html">Profile</a>
+        <button id="logout-btn" class="btn-outline-logout">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container py-4">
+    <h2 class="text-center mb-4">Food Recognition & Nutrition</h2>
+
+    <!-- Image Upload -->
+    <div class="mb-3">
+      <input
+        id="file-input"
+        class="form-control"
+        type="file"
+        accept="image/*"
+      />
+    </div>
+
+    <!-- Preview (fixed size) -->
+    <div id="preview-container" class="text-center mb-3">
+      <div class="preview-wrapper">
+        <img id="preview" alt="Image preview" />
+      </div>
+    </div>
+
+    <!-- Prediction -->
+    <p id="prediction" class="prediction-text text-center fs-4"></p>
+
+    <!-- Serving Size (grams) -->
+    <div class="mb-3 text-center">
+      <label for="serving-size" class="form-label">Serving size (g):</label>
+      <input
+        id="serving-size"
+        type="number"
+        class="form-control d-inline-block w-auto ms-2"
+        value="100"
+        min="1"
+        step="1"
+      />
+      <span id="serving-value" class="serving-value-text ms-2">100 g</span>
+    </div>
+
+    <!-- Nutrition Info (and Add button) -->
+    <section id="nutrition-info" class="nutrition-info"></section>
+  </div>
+
+  <script type="module" src="/src/scan.js"></script>
+</body>
+</html>
