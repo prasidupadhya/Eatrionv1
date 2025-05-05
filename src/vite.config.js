@@ -1,13 +1,15 @@
-import { defineConfig } from "vite";
+import { defineConfig } from 'vite';
+import { resolve } from 'path';
 
 export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        auth:    "/index.html",
-        scan:    "/scan.html",
-        profile: "/profile.html"
-      }
-    }
-  }
+        main: resolve(__dirname, 'index.html'),
+        diary: resolve(__dirname, 'diary.html'),
+        scan: resolve(__dirname, 'scan.html'),
+        profile: resolve(__dirname, 'profile.html'),
+      },
+    },
+  },
 });
