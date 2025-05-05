@@ -35,11 +35,11 @@
 
 ## 🛠 Setup Instructions
 
-1. Install dependencies
+**1. Install dependencies**
 
 npm install
 
-2. Configure environment variables
+**2. Configure environment variables**
 
 Create a .env file in the root:
 
@@ -49,13 +49,13 @@ VITE_SUPABASE_ANON_KEY=your-anon-key
 
 VITE_USDA_API_KEY=your-usda-api-key
 
-3. Run in development
+**3. Run in development**
 
 npm run dev
 
 Visit: http://localhost:5173
 
-4. Build for production
+**4. Build for production**
 
 npm run build
 
