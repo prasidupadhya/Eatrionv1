@@ -2,27 +2,27 @@
 
 **Eatrion** is a lightweight web application that helps users track their daily food intake using **machine learning-based image recognition** instead of manual food entry. Just snap or upload a photo of your food, and Eatrion identifies it and fetches accurate nutrition data from the **USDA FoodData Central API**.
 
-> ⚡ Built with TensorFlow.js, Supabase, Vite, and the USDA API.
+> Built with TensorFlow.js, Supabase, Vite, and the USDA API.
 
 ---
 
 ## 🌟 Features
 
-- 📸 **Image-based food recognition** (50 food classes)
-- 📊 **Daily diary with nutrition breakdown** (calories, protein, carbs, fat)
-- 🔐 **User authentication** via Supabase
-- 🧮 **Profile configuration** (set calorie/macro goals)
-- 🛠 **Powered by TensorFlow.js and USDA API**
+- **Image-based food recognition** (50 food classes)
+- **Daily diary with nutrition breakdown** (calories, protein, carbs, fat)
+- **User authentication** via Supabase
+- **Profile configuration** (set calorie/macro goals)
+- **Powered by TensorFlow.js and USDA API**
 
 ---
 
-## 🚀 Demo
+## Demo
 
-🌐 [Live Deployment on Vercel](https://eatrion.vercel.app/)
+[Live Deployment on Vercel](https://eatrion.vercel.app/)
 
 ---
 
-## 📦 Tech Stack
+## Tech Stack
 
 | Layer        | Tools/Frameworks                          |
 |--------------|--------------------------------------------|
@@ -33,7 +33,7 @@
 
 ---
 
-## 🛠 Setup Instructions
+## Setup Instructions
 
 **1. Install dependencies**
 
@@ -61,7 +61,7 @@ npm run build
 
 Output will be in the dist/ folder.
 
-## 📄 License
+## License
 
 This project is for academic and research purposes only.
 Model and dataset are not licensed for commercial use.
